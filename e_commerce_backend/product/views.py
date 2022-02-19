@@ -13,6 +13,7 @@ class LatestProductsList(APIView):
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
     
+
 class ProductDetail(APIView):
     def get_object(self, category_slug, product_slug):
         try:
@@ -23,5 +24,6 @@ class ProductDetail(APIView):
     def get(self, request, category_slug, product_slug, format=None):
         product = self.get_object(category_slug, product_slug)
         serializer = ProductSerializer(product)
+        return Response(serializer.data)
 
 
